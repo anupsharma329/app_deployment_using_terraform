@@ -1,8 +1,9 @@
-name : NODE CI
+name: NODE CI
 
 on: 
   pull_request:
-    push:
+    branches: [ main ]
+  push:
     branches: [ main ]
 
 jobs:
@@ -16,7 +17,8 @@ jobs:
       with:
         node-version: '18'
 
-    - run:
+    - name: Install and test
+      run: |
         cd app
         npm install
         npm test
