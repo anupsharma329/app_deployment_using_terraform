@@ -47,4 +47,4 @@ jobs:
         script: |
           cd /home/ubuntu/app-prod && pwd && ls -la
           npm install
-          pm2 restart index.js || pm2 start index.js --name "app-prod" #restart or start the application
+          pm2 restart app-prod || NODE_ENV=production pm2 start index.js --name "app-prod" --update-env
