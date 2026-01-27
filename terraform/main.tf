@@ -14,7 +14,7 @@ terraform {
 
     # Create SSH Key Pair
     resource "aws_key_pair" "deployer" {
-        key_name   = "deployer-key"
+        key_name   = "deployer-key-${formatdate("YYYY-MM-DD-hhmm", timestamp())}"
         public_key = file("~/.ssh/id_rsa.pub")  # Use your existing public key
     }
 
