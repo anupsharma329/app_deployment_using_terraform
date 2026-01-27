@@ -101,12 +101,16 @@ terraform {
         key_name               = aws_key_pair.deployer.key_name
         associate_public_ip_address = true
 
-        user_data = <<-EOF
+        user_data = base64encode(<<-EOF
                     #!/bin/bash
-                    yum update -y
-                    yum install -y nodejs git
-                    npm install -g pm2
+                    set -e
+                    apt-get update
+                    apt-get install -y curl git
+                    curl -fsSL https://deb.nodesource.com/setup_18.x | sudo -E bash -
+                    sudo apt-get install -y nodejs
+                    sudo npm install -g pm2
                     EOF
+        )
 
         tags = {
             Name = "DemoInstance-${terraform.workspace}"
