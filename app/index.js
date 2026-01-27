@@ -1,7 +1,7 @@
 import express from "express";
 const app = express();
 
-const env = "DEV";
+const env = "DEV EC2 Instance";
 
 app.get("/", (req, res) => {
     res.send(`Hello from ${env} EC2`);
