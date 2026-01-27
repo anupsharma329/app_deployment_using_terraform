@@ -4,7 +4,7 @@ const app = express();
 const env =  "PROD";
 
 app.get("/", (req, res) => {
-    res.send(`Hello from ${env} EC2`);
+    res.send(`Hello from ${env} EC2 instance`);
 });
 
 app.get("/health", (req, res) => {
