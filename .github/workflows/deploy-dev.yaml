@@ -1,9 +1,8 @@
-
-name: DEPLOY TO PROD EC2
+name: DEPLOY TO DEV EC2
 
 on:
   push:
-    branches: [ main ]
+    branches: [ dev ]
 
 jobs:
   deploy:
@@ -23,30 +22,29 @@ jobs:
     - name: Create app directory on EC2
       uses: appleboy/ssh-action@v0.1.6
       with:
-        host: ${{ secrets.EC2_HOST }}
+        host: ${{ secrets.EC2_HOST_DEV }}
         username: ${{ secrets.EC2_USER }}
         key: ${{ secrets.EC2_SSH_KEY }}
         script: |
-          mkdir -p /home/ubuntu/app
+          mkdir -p /home/ubuntu/app-dev
 
-    - name: Deploy to EC2
+    - name: Deploy to DEV EC2
       uses: appleboy/scp-action@v0.1.3
       with:
-        host: ${{ secrets.EC2_HOST }}
+        host: ${{ secrets.EC2_HOST_DEV }}
         username: ${{ secrets.EC2_USER }}
         key: ${{ secrets.EC2_SSH_KEY }}
         source: "app/*"
-        target: "/home/ubuntu/app/"
+        target: "/home/ubuntu/app-dev/"
         overwrite: true
 
-    - name: Start Application on EC2
+    - name: Start Application on DEV EC2
       uses: appleboy/ssh-action@v0.1.6
       with:
-        host: ${{ secrets.EC2_HOST }}
+        host: ${{ secrets.EC2_HOST_DEV }}
         username: ${{ secrets.EC2_USER }}
         key: ${{ secrets.EC2_SSH_KEY }}
         script: |
-          cd /home/ubuntu/app && pwd && ls -la
+          cd /home/ubuntu/app-dev && pwd && ls -la
           npm install
-          pm2 restart index.js || pm2 start index.js --name "app"
-          pm2 restart index.js || pm2 start index.js --name "app"
+          pm2 restart index.js || pm2 start index.js --name "app-dev"
