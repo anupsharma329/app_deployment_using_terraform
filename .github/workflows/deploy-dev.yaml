@@ -47,4 +47,4 @@ jobs:
         script: |
           cd /home/ubuntu/app-dev && pwd && ls -la
           npm install
-          pm2 restart index.js || pm2 start index.js --name "app-dev"
+          pm2 restart index.js || pm2 start index.js --name "app-dev" #restart or start the application
