@@ -1,7 +1,7 @@
 import express from "express";
 const app = express();
 
-const env = "DEV";
+const env = "PROD";
 
 app.get("/", (req, res) => {
   res.send(`
