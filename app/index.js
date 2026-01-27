@@ -43,8 +43,8 @@ app.get("/", (req, res) => {
             margin-bottom: 0.9rem;
           }
           h1 {
-            margin: 0 0 0.5rem;
-            font-size: 2rem;
+            margin: 0 0 0.75rem;
+            font-size: 2.6rem;
           }
           p {
             margin: 0.15rem 0;
