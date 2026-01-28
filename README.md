@@ -173,7 +173,7 @@ ssh ubuntu@<EC2_PUBLIC_IP>
 
 Go to your GitHub repository → **Settings** → **Secrets and variables** → **Actions** → **New repository secret**
 
-Add the following secrets:
+Add the following secrets: 
 
 | Secret Name | Description | Example Value | 
 |------------|-------------|---------------|
