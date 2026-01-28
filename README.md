@@ -175,7 +175,7 @@ Go to your GitHub repository → **Settings** → **Secrets and variables** → 
 
 Add the following secrets:
 
-| Secret Name | Description | Example Value |
+| Secret Name | Description | Example Value | 
 |------------|-------------|---------------|
 | `EC2_HOST_DEV` | Public IP of DEV EC2 instance | `3.85.44.246` |
 | `EC2_HOST_PROD` | Public IP of PROD EC2 instance | `54.197.119.18` |
